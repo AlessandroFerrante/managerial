@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="buy"> 
+        <div class="info">
+            <div class="card-info" data-text="Concerto 1">      
+                <img src=""/>
+                <h2>h2</h2>
+                <h2>h2</h2>
+                <p>p</p>
+                <p>p</p>
+                <p>p</p>
+                <p>p</p>
+                <p>p</p>
+            </div>
+          	</c:forEach>
+        </div>
+        <div class="descrizione">
+            <div class="box">
+                <div class="header">
+                   <h2>Details</h2>
+               </div>
+               <div class="events">
+                   <div class="event" >                    
+                        <p>p</p>
+                        <p>p</p>
+                        <p>p</p>
+                        <p>p</p>
+                        <p>p</p>
+                   </div>  
+               </div>
+            </div>
+        </div>
+        <div class="buy-card">
+            <img src="" alt="">
+            <div class="container-buy" >
+                <p class="counter" id="counter">1</p>
+                <span><button class="incr"><i class="fa-solid fa-plus"></i></button></span>
+                <span><button class="decr"><i class="fa-solid fa-minus"></i></button></span>
+            </div>
+            <div class="btn2-container">
+                <button class="btn2">Add</button>
+            </div>
+        </div>
+        </c:forEach>
+    </div>
+    <script>
+    
+        const counter= document.getElementById('counter');
+        const prices= document.getElementById('price');
+        const incr= document.querySelector('.incr');
+        const decr= document.querySelector('.decr');
+        let count= 1;
+        let price= $(".container-buy").attr("price");
+        incr.addEventListener("click", ()=>{
+            count++;
+            counter.innerHTML=count;
+            prices.innerHTML=price*count;
+            console.log(price*count);
+        })
+        decr.addEventListener("click", ()=>{
+            if(count>1){
+                count--;
+                counter.innerHTML=count;
+                prices.innerHTML=price*count;
+                console.log(price*count);
+            }
+        })
+    </script>
+</body>
+</html> 

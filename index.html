@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="ISO-8859-1">
+	<title>TiTech</title>
+	<link rel="icon" type="image/x-icon" href="logo.ico">
+    <link rel="stylesheet" href="homepage.css">
+   <script src="https://kit.fontawesome.com/a726a595d5.js" crossorigin="anonymous"></script>
+	<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	-->
+	
+</head>
+<body>
+		
+		<div class="loader" id="loading">
+			<div class="loader2" id="loading2">
+				<a href="https://www.instagram.com/alessandroferrantee/?hl=it"> 
+					<img src="logo.png" alt="">
+				</a> 
+	       </div>
+	    </div> 
+    
+	<header class="nav">
+		<div class=imglogo>
+			<a href="https://www.instagram.com/alessandroferrantee/?hl=it"> 
+					<img src="logo.png" alt="">
+			</a> 
+		</div>
+	    <div class="menu">
+	        <span><a href="homepage.html" ><p class="active" >Home</p></a></span>
+	        <span><p href="#main" class="" onclick="clicks('section.html')">Section1</p></span>
+	        <span><p href="#main" class="" onclick="clicks('section.html')">Section2</p></span>        
+	        <span><p href="#main" class="" onclick="clicks('section.html')">Section3</p></span>              
+	    </div>
+    </header> 
+	<div class="container">
+	   <div class="main" id="main">
+			<!-- add -->
+			<div class="home">
+				<div class="add">
+					
+					<div class="single-add" onclick="clicks('section-form.html')">
+						<div class="circle" >
+							<h1>+</h1>
+						</div>
+						<h4>Add items</h4>
+						<h5>section1</h5>
+					</div>
+					<div class="single-add" onclick="clicks('section-form.html')">
+						<div class="circle" >
+							<h1>+</h1>
+						</div>
+						<h4>Add items</h4>
+						<h5>section2</h5>
+					</div>
+					<div class="single-add" onclick="clicks('section-form.html')">
+						<div class="circle" >
+							<h1>+</h1>
+						</div>
+						<h4>Add items</h4>
+						<h5>section3</h5>
+					</div>
+				</div>
+			</div>
+	   </div>
+	</div>
+    <script>
+    hideLoading(); 
+				const a = document.querySelectorAll("p");
+			    a.forEach(e => {
+			        e.addEventListener("click", (e) => {
+			            console.log(e.target.classList);
+			            a.forEach(e => {
+			                e.classList.remove("active");
+			            })
+			            if (!(e.target.classList.contains("active"))) {
+			                e.target.classList.add("active");
+			            }
+			        });
+			    }); 
+			    
+			    
+			  
+		      function showLoading(){ //Mostra
+		    	   document.getElementById("loading").style.display="flex";
+		       }
+		       function hideLoading(){ //Nascondi
+		    	   document.getElementById("loading").style.display="none";
+		       }
+		    function clicks(str){
+		       if(window.XMLHttpRequest){
+		           xmlhttp = new XMLHttpRequest();
+		       }
+		       else{
+		           xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		       }
+		      	 xmlhttp.onreadystatechange = function(){
+		      		 //console.log(xmlhttp);
+		           if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+		            /*for(i=0;i<document.getElementsByClassName("contents").length;i++){
+		            document.getElementsByClassName("main")[i].innerHTML="";
+		           }//scorre i div come un vettore e ogni elemento lo pone uguale a ""*/
+		             
+		           document.getElementById("main").innerHTML = xmlhttp.responseText;
+		           console.log(xmlhttp.responseText);
+		           
+		           
+		           hideLoading();
+		           /*ticket counter*/
+		           const counter= document.getElementById('counter');
+                   const incr= document.querySelector('.incr');
+		           const decr= document.querySelector('.decr');
+		           let count= 1;
+		           console.log(incr);
+                   if(incr!=null){
+                        incr.addEventListener("click", ()=>{
+                            count++;
+                            counter.innerHTML=count;
+                        })
+                    }
+                    if(decr!=null){
+                        decr.addEventListener("click", ()=>{
+                            if(count>1){
+                                count--;
+                                counter.innerHTML=count;
+                            }
+                        })
+                    }
+		           
+		           return;
+		           }
+		       }
+		       xmlhttp.open("GET",str, true);
+		       xmlhttp.send();
+		      	showLoading();
+		    }
+	    
+	</script>
+</body>
+</html>
